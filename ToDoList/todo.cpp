@@ -51,34 +51,34 @@ void ToDo::updateTask(int index, const std::string& d, bool c, const Date& date)
 
 void ToDo::displayTasks() {
 	std::ofstream file("toDoList.txt");
-    Date date;
-    time_t now = time(0);
-    tm* ltm = localtime(&now);
-    date.setYear(1900 + ltm->tm_year);
-    date.setMonth(1 + ltm->tm_mon);
-    date.setDay(ltm->tm_mday);
-    std::cout << "Displaying tasks:" << std::endl;
-    std::string result;
-    for (int i = 0; i < tasks.size(); ++i) {
-        const Task& task = tasks[i]; 
-        if (task.getCompleted()) {
-            result = " Completed.";
-        } 
-        else if (task.getDeadline().getYear() == date.getYear() &&
-                   task.getDeadline().getMonth() == date.getMonth() &&
-                   date.getDay() == task.getDeadline().getDay()) {
-            result = " Deadline today.";
-        } 
-        else if (task.getDeadline().getDay() < date.getDay()) {
-            result = " Deadline has passed. Task not completed.";
-        } 
-        else {
-            result = " Deadline in the future.";
-        }
-        file << i + 1 << ":\t" << task.getDescription() << "\t" << result << std::endl;
-        std::cout << i + 1 << ":\t" << task.getDescription() << "\t" << result << std::endl;
-    }
-    file.close();
+    	Date date;
+    	time_t now = time(0);
+    	tm* ltm = localtime(&now);
+    	date.setYear(1900 + ltm->tm_year);
+    	date.setMonth(1 + ltm->tm_mon);
+    	date.setDay(ltm->tm_mday);
+    	std::cout << "Displaying tasks:" << std::endl;
+    	std::string result;
+    	for (int i = 0; i < tasks.size(); ++i) {
+        	const Task& task = tasks[i]; 
+        	if (task.getCompleted()) {
+            		result = " Completed.";
+        	} 
+        	else if (task.getDeadline().getYear() == date.getYear() &&
+                   	task.getDeadline().getMonth() == date.getMonth() &&
+                   	date.getDay() == task.getDeadline().getDay()) {
+            		result = " Deadline today.";
+        	} 
+        	else if (task.getDeadline().getDay() < date.getDay()) {
+            		result = " Deadline has passed. Task not completed.";
+        	} 
+        	else {
+            		result = " Deadline in the future.";
+        	}
+        	file << i + 1 << ":\t" << task.getDescription() << "\t" << result << std::endl;
+        	std::cout << i + 1 << ":\t" << task.getDescription() << "\t" << result << std::endl;
+    	}
+    	file.close();
 }
 
 int ToDo::getCountOfCompletedTasks() const {

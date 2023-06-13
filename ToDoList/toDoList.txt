@@ -1,0 +1,3 @@
+1:	Do homework.	 Deadline in the future.
+2:	Do task1.	 Deadline has passed. Task not completed.
+3:	Do task2.	 Completed.
